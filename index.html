@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Profit Khata</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <h1>Profit Khata</h1>
+    <p>Ecommerce ka date-wise hisaab</p>
+  </header>
+  <div id="banner" class="banner" hidden role="status"></div>
+  <section id="summary" class="summary" aria-live="polite"></section>
+  <div class="tools">
+    <div class="chips" role="group" aria-label="Entry filter">
+      <button type="button" class="chip" data-filter="all">Sab</button>
+      <button type="button" class="chip" data-filter="invest">Investment</button>
+      <button type="button" class="chip" data-filter="received">Payment</button>
+    </div>
+    <button type="button" id="sort" class="sort"></button>
+  </div>
+  <main id="list" class="list"></main>
+</div>
+
+<div class="bar"><div class="bar-in"><button type="button" id="add" class="primary">+ Nayi entry</button></div></div>
+<div id="toast" class="toast" hidden role="status"></div>
+
+<div id="overlay" class="overlay" hidden>
+  <div class="backdrop" data-close></div>
+  <form id="sheet" class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" novalidate>
+    <div class="sheet-head">
+      <h2 id="sheet-title">Nayi entry</h2>
+      <button type="button" class="x" data-close aria-label="Band karo">&times;</button>
+    </div>
+    <div class="seg" role="radiogroup" aria-label="Entry ka type">
+      <input type="radio" name="f-type" id="t-invest" value="invest">
+      <label for="t-invest">Investment</label>
+      <input type="radio" name="f-type" id="t-received" value="received">
+      <label for="t-received">Payment mila</label>
+    </div>
+    <div class="field">
+      <div class="field-head">
+        <label for="f-date">Date</label>
+        <div class="quick">
+          <button type="button" data-days="0">Aaj</button>
+          <button type="button" data-days="-1">Kal</button>
+        </div>
+      </div>
+      <input type="date" id="f-date" required>
+      <span class="hint" id="date-hint"></span>
+    </div>
+    <div class="field">
+      <label for="f-amount">Amount</label>
+      <div class="money"><span>&#8377;</span><input type="text" id="f-amount" inputmode="decimal" autocomplete="off" placeholder="0"></div>
+    </div>
+    <div class="field">
+      <label for="f-note">Comment (optional)</label>
+      <input type="text" id="f-note" maxlength="140" autocomplete="off" placeholder="jaise: Meesho se 20 kurti ka stock">
+    </div>
+    <div class="form-err" id="form-err" hidden role="alert"></div>
+    <div class="actions">
+      <button type="button" class="danger" id="del" hidden>Delete</button>
+      <button type="submit" class="primary" id="save">Save karo</button>
+    </div>
+  </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
